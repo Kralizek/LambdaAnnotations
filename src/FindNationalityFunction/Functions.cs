@@ -10,19 +10,19 @@ namespace FindNationalityFunction;
 
 public class Functions
 {
-[LambdaFunction]
-public async Task<List<Country>> GetCountriesAsync([FromServices] IHttpClientFactory httpClientFactory, string name)
-{
-    var http = httpClientFactory.CreateClient("Nationality");
-
-    var response = await http.GetFromJsonAsync<Response>($"https://api.nationalize.io/?name={name}");
-
-    return response?.Countries switch
+    [LambdaFunction]
+    public async Task<List<Country>> GetCountriesAsync([FromServices] IHttpClientFactory httpClientFactory, string name)
     {
-        null or [] => new List<Country>(),
-        var items => new List<Country>(items)
-    };
-}
+        var http = httpClientFactory.CreateClient("Nationality");
+
+        var response = await http.GetFromJsonAsync<Response>($"https://api.nationalize.io/?name={name}");
+
+        return response?.Countries switch
+        {
+            null or [] => new List<Country>(),
+            var items => new List<Country>(items)
+        };
+    }
 }
 
 public record Response(
