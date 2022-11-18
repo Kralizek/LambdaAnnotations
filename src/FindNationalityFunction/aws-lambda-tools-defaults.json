@@ -1,0 +1,7 @@
+{
+  "function-runtime": "dotnet6",
+  "function-name": "find-nationality",
+  "function-memory-size": 128,
+  "function-timeout": 30,
+  "function-handler": "FindNationalityFunction::FindNationalityFunction.Functions_GetCountriesAsync_Generated::GetCountriesAsync"
+}

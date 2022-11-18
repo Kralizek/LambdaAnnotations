@@ -1,0 +1,2 @@
+# Do not check in the template as its a source generator output
+serverless.template
