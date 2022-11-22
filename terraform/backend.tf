@@ -1,5 +1,8 @@
 terraform {
-
+    backend "s3" {
+        key = "labs/find-nation/terraform.tfstate"
+        encrypt = true
+    }
 }
 
 provider "aws" {
