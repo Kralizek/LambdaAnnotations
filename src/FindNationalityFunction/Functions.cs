@@ -22,7 +22,7 @@ public class Functions
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
     
-    [LambdaFunction]
+    [LambdaFunction(Name = "FindNationality", MemorySize = 128)]
     public async Task<List<Country>> GetCountriesAsync([FromServices] HttpClient http, string name)
     {
         _logger.LogInformation("Fetching countries for name {Name}", name);
@@ -36,7 +36,6 @@ public class Functions
         };
     }
 }
-
 
 public record Response(
     [property: JsonPropertyName("country")] Country[] Countries,
